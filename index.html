@@ -3,34 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="refresh" content="150">
+<meta http-equiv="refresh" content="120">
 <title>抖音创作者 - 扫码登录</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-  .card { background: white; border-radius: 20px; padding: 40px 36px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2); max-width: 380px; width: 90%; }
-  .logo { font-size: 32px; font-weight: 800; color: #fe2c55; margin-bottom: 4px; letter-spacing: -1px; }
-  .subtitle { color: #888; font-size: 14px; margin-bottom: 28px; }
-  .qr-wrap { display: inline-block; padding: 12px; border: 3px solid #fe2c55; border-radius: 12px; margin-bottom: 20px; }
-  .qr-img { width: 200px; height: 200px; display: block; image-rendering: pixelated; }
-  .tip { color: #333; font-size: 15px; font-weight: 600; margin-bottom: 12px; }
-  .steps { background: #fff5f7; border-radius: 10px; padding: 14px 16px; text-align: left; margin-bottom: 16px; }
-  .steps li { color: #555; font-size: 13px; margin: 5px 0; line-height: 1.5; }
-  .badge { display: inline-block; background: #fe2c55; color: white; font-size: 11px; padding: 3px 10px; border-radius: 20px; margin-bottom: 8px; }
-  .time { color: #bbb; font-size: 11px; margin-top: 8px; }
-  .warn { color: #ff6b35; font-size: 12px; margin-top: 6px; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: linear-gradient(135deg, #fe2c55 0%, #ff6b35 100%); display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+.card { background: white; border-radius: 20px; padding: 36px 32px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3); max-width: 360px; width: 90%; }
+.logo { font-size: 28px; font-weight: 800; color: #fe2c55; margin-bottom: 6px; }
+.subtitle { color: #999; font-size: 13px; margin-bottom: 24px; }
+.qr-wrap { display: inline-block; padding: 10px; border: 3px solid #fe2c55; border-radius: 12px; margin-bottom: 16px; }
+.qr-img { width: 200px; height: 200px; display: block; }
+.tip { color: #333; font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+.steps { background: #fff5f7; border-radius: 10px; padding: 12px 16px; text-align: left; margin-bottom: 12px; }
+.steps li { color: #555; font-size: 13px; margin: 4px 0; }
+.warn { color: #ff6b35; font-size: 12px; margin-top: 8px; }
+.time { color: #bbb; font-size: 11px; margin-top: 6px; }
 </style>
 </head>
 <body>
 <div class="card">
   <div class="logo">🎬 抖音创作者</div>
-  <div class="subtitle">Creator Platform · 视频发布</div>
-  <div class="badge">📱 扫码登录</div>
-  <br><br>
+  <div class="subtitle">扫码登录 · 发布问界M8视频</div>
   <div class="qr-wrap">
-    <img src="data:image/png;base64,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" class="qr-img" alt="抖音登录二维码">
+    <img src="data:image/png;base64,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" class="qr-img" alt="抖音登录二维码">
   </div>
-  <div class="tip">使用抖音 App 扫描二维码</div>
+  <div class="tip">📱 使用抖音 App 扫描二维码</div>
   <div class="steps">
     <ol>
       <li>打开抖音 App</li>
@@ -39,8 +36,8 @@
       <li>点击「确认登录」✅</li>
     </ol>
   </div>
-  <div class="time">⏰ 生成时间：2026-03-05 17:06:57</div>
-  <div class="warn">⚠️ 二维码约 2-3 分钟有效，页面自动刷新</div>
+  <div class="warn">⚠️ 约 2 分钟有效，页面自动刷新</div>
+  <div class="time">生成时间：2026-03-05 17:11:49</div>
 </div>
 </body>
 </html>
