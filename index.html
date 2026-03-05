@@ -1,84 +1,119 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>抖音登录二维码</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #ff0050 0%, #ff6b95 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .container {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
-            max-width: 400px;
-            width: 100%;
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
-        .subtitle {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-        .qr-wrapper {
-            background: #f5f5f5;
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .qr-code {
-            width: 100%;
-            max-width: 280px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-        .tip {
-            color: #999;
-            font-size: 13px;
-            margin-top: 20px;
-        }
-        .url {
-            color: #ff0050;
-            font-size: 12px;
-            margin-top: 10px;
-            word-break: break-all;
-        }
-        .timestamp {
-            color: #ccc;
-            font-size: 11px;
-            margin-top: 15px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>抖音扫码登录</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 40px 36px 32px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      text-align: center;
+      width: 340px;
+    }
+    .logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: #ff0050;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .brand { font-size: 22px; font-weight: 700; color: #1a1a1a; }
+    .subtitle { color: #888; font-size: 13px; margin-bottom: 28px; }
+    .qr-box {
+      background: #f8f8f8;
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .qr-img {
+      width: 220px; height: 220px;
+      display: block; margin: 0 auto;
+      image-rendering: pixelated;
+    }
+    .corner {
+      position: absolute;
+      width: 20px; height: 20px;
+      border-color: #ff0050;
+      border-style: solid;
+    }
+    .corner.tl { top:10px; left:10px; border-width:3px 0 0 3px; }
+    .corner.tr { top:10px; right:10px; border-width:3px 3px 0 0; }
+    .corner.bl { bottom:10px; left:10px; border-width:0 0 3px 3px; }
+    .corner.br { bottom:10px; right:10px; border-width:0 3px 3px 0; }
+    .tip { color: #555; font-size: 14px; margin-bottom: 6px; }
+    .tip strong { color: #ff0050; }
+    .steps {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 16px 0;
+      font-size: 12px;
+      color: #999;
+    }
+    .step { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .step-num {
+      width: 22px; height: 22px;
+      background: #ff0050;
+      color: white;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .warning {
+      background: #fff8e1;
+      border: 1px solid #ffe082;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #f57c00;
+      margin-top: 14px;
+    }
+    .ts { color: #ccc; font-size: 11px; margin-top: 14px; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>📱 抖音登录二维码</h1>
-        <p class="subtitle">使用手机扫描二维码登录抖音</p>
-        <div class="qr-wrapper">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQAAAABTUiuoAAACCUlEQVR4nO2aQY6jMBBFXw2WWBppDtBHgRvMmfpmcJQcIBJeRgL9WdjQSfcs6JFILHXVgsTwFl+yivpVxsTBmH4dJcFRRx111FFHz0StRICpI19sSNvt4XQBjh6KkH/6ESD9xohrAAygWWD7X4FWRzc0lRTSmAKSFjQCOd+eIcDRAxE+rY14DUacvzr7l2t19DMqXdq8UTa8RICjB9Ao5VffAECyXKwkLc8R4OhxdDIzs26728+NgDVbwmcIcPRI5Lr1UaQEN9suj7Xr5Vodve+3SoMVMLNWZt1qTN3quVUNiqRSsiAuaIxLvpeX0rIhL9fqaEF7SRpTAGhUMioFzLrdedSi9Qejd/1WabUIi/WXAMRrECCfZdSF2gDQX1pBvFkeFpICNiT3hPWge26tAeLNRApo+jPnVNP0tgSdKcDR/5kTBvRurZi6RqU7TgEb8LpVD1r8X5993wK9FqS5yZ6Qfn/qnrAq1IYUgNSqTDXyMlD8fU1afyhamqk9cm6Ne1oRtyeeW7Wgd2fH0Ki4wxSgv/jZcXVorlsz6P1j1BQXmN6kR/QcAY4eivL+m9kn75A3CoB+xidPdaMaoRjD/D3NswU4ehDt50Y2pLZMdUcafxNWg26zjCgglYVInUG8BojzuQIc/X7dKrH1xNDo7pDfu+NK0H+cHfOweWcLcNRRRx111NFvoH8BUEwK6x3rs0wAAAAASUVORK5CYII=" alt="抖音登录二维码" class="qr-code">
-        </div>
-        <p class="tip">打开抖音App扫一扫</p>
-        <p class="url">https://www.douyin.com/login</p>
-        <p class="timestamp">生成时间: 2026-03-05 16:29:16</p>
+  <div class="card">
+    <div class="logo-row">
+      <div class="logo-icon">🎵</div>
+      <span class="brand">抖音</span>
     </div>
+    <p class="subtitle">扫码登录 · 安全快捷</p>
+    <div class="qr-box">
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+      <img class="qr-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIAAQMAAADOtka5AAAABlBMVEX///8AAABVwtN+AAACzElEQVR42uzcPZLqMAzAcTEpKDlCjsLR4Gh7FI6QMkUGvYktyQ7kY4tXLOavZtlN+G2lsS3ZFoIgCIIgCIIgiL8eV4346fJPEbmp/tgLtzH9OJX3ngAAAGuA/3pOwPyb+lceooO/d4qPVwCAVoF+zpD72ZJpqLNMLhrcIPNfJgAAgGNA8kf7yhw6pJGp0wcAwDcBnT4kj0zzLO2UkynLAgAAcAzENM9WNvM6Z7K/JkA1Z+PhPBEA4JOBxfI/D0DjDKQss2RKD35VPwAA+F7gLS4q53kAEokha87G31eqAQA+E0jjTJ0oacF/s5yJ4ah/xvRtra4MAABg9edcNKgK011u0lg22qTPBjABAGgRyLO0wZo0jzQySVn+53cmS6bV5T8AAECppeXh6DpZySwveTRzVcU6ywoA0CZgyXRTK5mpLXm8YRnL/0Gq7g0AAMBbeC9GLBsTcJecjSankeliDwAA2gRiZNLS/ffJWF/ttrSGJQAAwCEwprHoma271w+GsuS56OGSBwDgg4Hci0kDUOzdf23S+IPVZAIAAIglz6MknXgt7bUUnf5JbAsAAGgQ8CaNlcxKk8YblrcxympyXtsJAwAAsNg/c6+qCZIAK0VLJSsAQLtAnP1aztK8yR979y2Z7h0AAMAG4Gk2xupn9YSl1B8BANoEfIu+TraySbW0amTyWJ2lAQAAvGWj7x7L9YPrYpqX74QZy3EzAIDmgGqLpQ9AVZPGD8JEXbnb2lYGAPDtQB3ei/HN/73GgzjTP+2dSAMA+GDg5eK9RV25L8/iGPLGQRgAAIC3m/suupz/+XbNzVNlAADNAMv7kbwv6fcj2X4zXZ7CBAAA2Ae0pGDaFhAbM3ebNAAArQHlIGUMWb4toH+53wIAAGDv2vytq1+uU736AQBoFHi9eC96MdU1FrbFcue4MgAAAEEQBEEQBEEQxP+PfwEAAP//7QrOtugilxwAAAAASUVORK5CYII=" alt="抖音登录二维码">
+    </div>
+    <p class="tip">打开 <strong>抖音 App</strong>，点击右上角</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><span>打开抖音</span></div>
+      <div class="step"><div class="step-num">2</div><span>扫一扫</span></div>
+      <div class="step"><div class="step-num">3</div><span>确认登录</span></div>
+    </div>
+    <div class="warning">⚠️ 二维码有效期约 3 分钟，过期请刷新页面</div>
+    <p class="ts">生成时间：2026-03-05 16:42:38</p>
+  </div>
 </body>
 </html>
